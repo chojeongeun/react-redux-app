@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
-function App() {
+
+function App({value ,onIncrement, onDecrement}) {
+  console.log(value)
+  const [todoValue, setTodoValue] = useState('')
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div>
+      <ul>
+
+      </ul>
+      <form onSubmit={handleSubmit}>
+        <input type='text' 
+          value={todoValue} 
+          onChange={(e)=>setTodoValue(e.target.value)}
+          />
+        <input type='submit' />
+      </form>
+    </div>
+
+     Clicked:{value.counter} times
+     {" "}
+     <button onClick={onIncrement}>
+      +
+     </button>
+     {" "}
+     <button onClick={onDecrement}>
+      -
+     </button>
     </div>
   );
 }
