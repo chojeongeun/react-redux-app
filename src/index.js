@@ -8,12 +8,16 @@ import counter from './reducers';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import { loggerMiddleware } from './middleware';
+import { thunk } from 'redux-thunk';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
-const middleware = applyMiddleware(loggerMiddleware);
+const middleware = applyMiddleware(thunk, loggerMiddleware);
+
+
+
 
 const store = createStore(rootReducer, middleware);
 
